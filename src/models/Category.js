@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  const categorie = sequelize.define('Categorie',{
+  const categorie = sequelize.define('Category',{
     id: {
       allowNull: false,
       autoIncrement: true,

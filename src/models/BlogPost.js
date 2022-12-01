@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     content: DataTypes.STRING,
     published: DataTypes.DATE,
     updated: DataTypes.DATE,
-    useId: DataTypes.INTEGER
+    userId: DataTypes.INTEGER
   }, {
     sequelize,
     timestamps: false,
