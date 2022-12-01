@@ -9,16 +9,16 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       display_name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(255)
       },
       email: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(255)
       },
       password: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(255)
       },
       image: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(255)
       }
     });
   },

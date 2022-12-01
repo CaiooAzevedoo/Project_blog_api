@@ -14,12 +14,20 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     content: DataTypes.STRING,
     published: DataTypes.DATE,
-    updated: DataTypes.DATE
+    updated: DataTypes.DATE,
+    useId: DataTypes.INTEGER
   }, {
     sequelize,
     timestamps: false,
     // modelName: 'blog_post',
     underscored: true,
   });
+
+  blogPost.associate = (models) => {
+    blogPost.belongsTo(models.User, {
+      as: 'user',
+      foreignKey: 'userId'
+    })
+  }
   return blogPost;
 };

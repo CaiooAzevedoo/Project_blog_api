@@ -3,20 +3,14 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-const postsCategories = sequelize.define('PostsCategories',{
-  id: {
-    allowNull: false,
-    autoIncrement: true,
-    primaryKey: true,
-    type: DataTypes.INTEGER
-  },
+const postCategories = sequelize.define('PostCategories',{
     post_id: DataTypes.INTEGER,
     category_id: DataTypes.INTEGER
   }, {
     sequelize,
     timestamps: false,
-    // modelName: 'posts_categories',
+    // modelName: 'post_categories',
     underscored: true,
   });
-  return postsCategories;
+  return postCategories;
 };

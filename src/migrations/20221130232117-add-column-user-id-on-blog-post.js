@@ -1,11 +1,10 @@
 'use strict';
 
-const sequelize = require("sequelize");
-
+'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
   await queryInterface.addColumn('blog_posts', 'user_id', { 
-      type: sequelize.INTEGER,
+      type: Sequelize.INTEGER,
       references: {
         model: 'users',
         key: 'id'
