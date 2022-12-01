@@ -4,8 +4,8 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
 const postCategories = sequelize.define('PostCategories',{
-    post_id: DataTypes.INTEGER,
-    category_id: DataTypes.INTEGER
+    postId: DataTypes.INTEGER,
+    categoryId: DataTypes.INTEGER
   }, {
     sequelize,
     timestamps: false,
