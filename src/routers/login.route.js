@@ -1,12 +1,17 @@
 const express = require('express');
+const { validateLogin, userExist } = require('../middlewares/login.middleware');
+const { generateToken } = require('../utils/jwt.utils');
 
-const { validateLogin, userExist } = require('../middlewares');
+const router = express.Router();
 
-const routers = express.Router();
-
-routers.post('/login', validateLogin, userExist, (req, res) => {
+router.post(
+    '/', 
+    validateLogin, userExist, (req, res) => {
     const credentials = req.body;
-    if (credentials) { res.status(200).json({ message: 'Opa' }); }
-});
+    const token = generateToken(credentials.email);
 
-module.exports = routers;
+    return res.status(200).json({ token });
+},
+);
+
+module.exports = router;
