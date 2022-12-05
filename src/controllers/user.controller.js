@@ -1,18 +1,18 @@
-// const { userService } = require('../services');
+const { userService } = require('../services');
 
-// const getUsers = async (req, res) => {
-//     try {
-//     const allUsers = await userService.getUsers();
-//     if (!allUsers) throw Error;
+const getUsers = async (req, res) => {
+    try {
+    const allUsers = await userService.getUsers();
+    if (!allUsers) throw Error;
     
-//     res.status(200).json(allUsers);
-//     } catch (err) {
-//     res.status(500).json({
-//         message: '',
-//     });
-//     }
-// };
+    res.status(200).json(allUsers);
+    } catch (err) {
+    res.status(500).json({
+        message: '',
+    });
+    }
+};
 
-// module.exports = {
-//     getUsers,
-// };
+module.exports = {
+    getUsers,
+};

@@ -1,15 +1,16 @@
-// const jwt = require('jsonwebtoken');
-// const { User } = require('../models');
+const jwt = require('jsonwebtoken');
+const { User } = require('../models');
 
-// const getUsers = () => User.findAll();
+const getUsers = () => User.findAll();
 
-// const postUser = async ({ displayName, email, password, image }) => { 
-//     const newPost = await User.create({ displayName, email, password, image }); 
-//     jwt.sign({ data: User.dataValues });
-//     return newPost;
-// };
+const postNewUser = async ({ displayName, email, password, image }) => { 
+    const newUser = await User.create({ displayName, email, password, image }); 
+    const { password: _, ...userWithoutPassword } = newUser.dataValues;
+    const token = jwt.sign({ data: userWithoutPassword });
+    return { user: userWithoutPassword, token };
+};
 
-// module.exports = {
-//     getUsers,
-//     postUser,
-// };
+module.exports = {
+    getUsers,
+    postNewUser,
+};
