@@ -1,6 +1,7 @@
 const express = require('express');
 const { validateHeader, validateToken } = require('../middlewares/user.middleware');
 const { getUsers } = require('../controllers/user.controller');
+// const { validateToken } = require('../utils');
 
 const router = express.Router();
 

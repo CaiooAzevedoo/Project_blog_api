@@ -2,12 +2,16 @@ const { userService } = require('../services');
 const { jwt } = require('../utils');
 
 const addNewUser = async (req, res) => {
-    const NewUser = req.body;
+    try {
+ const NewUser = req.body;
 
-    await userService.postNewUser(NewUser);
+    await userService.addNewUser(NewUser);
     const token = jwt.generateToken(NewUser);
 
-    return res.status(201).json({ messa: token });
+    return res.status(201).json({ message: token });
+    } catch (err) {
+    return res.status(400).json({});
+    }
 };
 
 const getUsers = async (_req, res) => {
@@ -15,9 +19,9 @@ const getUsers = async (_req, res) => {
     const allUsers = await userService.getUsers();
     if (!allUsers) throw Error;
     
-    res.status(200).json(allUsers);
+    return res.status(200).json(allUsers);
     } catch (err) {
-    res.status(500).json({
+    return res.status(500).json({
         message: 'Error',
     });
     }
