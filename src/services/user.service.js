@@ -1,8 +1,7 @@
 // const jwt = require('jsonwebtoken');
 const { User } = require('../models');
 
-const getUsers = () => User.findAll({
-});
+const getUsers = () => User.findAll();
 
 // const postNewUser = async ({ displayName, email, password, image = null }) => { 
 //     const newUser = await User.create({ displayName, email, password, image }); 
