@@ -7,6 +7,7 @@ const app = express();
 
 app.use(express.json());
 app.use('/login', router.loginRoute);
+app.use('/user', router.userRoute);
 
 // ...
 
