@@ -9,7 +9,6 @@ const addNewUser = async (req, res) => {
     const token = jwt.generateToken(newUser.email);
 
     return res.status(201).json({ message: token });
-    //   return res.status(201).json({ message: 'test' });
     } catch (err) {
     return res.status(400).json({ });
     }

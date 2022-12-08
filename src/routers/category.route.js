@@ -1,5 +1,5 @@
 const express = require('express');
-const { addNewCategory } = require('../controllers/category.controllers');
+const { addNewCategory, getAllCategory } = require('../controllers/category.controllers');
 const { validateHeader, validateToken } = require('../middlewares/category.middleware');
 
 const router = express.Router();
@@ -10,4 +10,5 @@ addNewCategory);
 // router.post('/',
 // addNewCategory);
 
+router.get('/', validateHeader, validateToken, getAllCategory);
 module.exports = router;

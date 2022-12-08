@@ -1,4 +1,3 @@
-// const { Op } = require('sequelize');
 const jwt = require('../utils');
 const { User } = require('../models');
 

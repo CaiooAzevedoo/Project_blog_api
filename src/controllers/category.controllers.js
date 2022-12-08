@@ -12,6 +12,19 @@ const addNewCategory = async (req, res) => {
     }
 };
 
+const getAllCategory = async (_req, res) => {
+  try {
+    const allCategories = await categoryService.getCategory();
+    if (!allCategories) throw Error;
+    return res.status(200).json(allCategories);
+  } catch (err) {
+    return res.status(500).json({
+      message: 'Error',
+  });
+  }
+};
+
 module.exports = {
   addNewCategory,
+  getAllCategory,
 };
