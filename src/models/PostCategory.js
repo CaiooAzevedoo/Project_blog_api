@@ -9,7 +9,6 @@ const postCategories = sequelize.define('PostCategory',
   categoryId: DataTypes.INTEGER}, 
 {
     timestamps: false,
-    // modelName: 'post_categories',
     underscored: true,
   });
 

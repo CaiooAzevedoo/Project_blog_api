@@ -21,6 +21,4 @@ validateHeader,
 validateToken, 
 getUserId);
 
-// router.get('/', getUsers);
-
 module.exports = router;
