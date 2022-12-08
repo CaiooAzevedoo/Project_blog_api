@@ -3,15 +3,15 @@ const { jwt } = require('../utils');
 
 const addNewUser = async (req, res) => {
     try {
-    const NewUser = req.body;
+    const newUser = req.body;
 
-    await userService.addNewUser(NewUser);
-    const token = jwt.generateToken(NewUser.email);
+    await userService.addNewUser(newUser);
+    const token = jwt.generateToken(newUser.email);
 
     return res.status(201).json({ message: token });
     //   return res.status(201).json({ message: 'test' });
     } catch (err) {
-    return res.status(400).json({});
+    return res.status(400).json({ });
     }
 };
 

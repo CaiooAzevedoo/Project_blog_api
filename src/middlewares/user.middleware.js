@@ -1,26 +1,6 @@
-// const yup = require('yup');
-// const validator = require('validator');
-const { Op } = require('sequelize');
+// const { Op } = require('sequelize');
 const jwt = require('../utils');
 const { User } = require('../models');
-
-// const validateCredentials = async (req, res, next) => {
-//  yup.object().shape({
-//     displayName: yup.string().min(8, '"displayName" length must be at least 8 characters long')
-//     .required('"displayName" is required'),
-//     email: yup.string().email('"email" must be a valid email').required('"email" is required'),
-//     password: yup.string().min(6, '"password" length must be at least 6 characters long'),
-// }); 
-// try {
-// await validateCredentials.validate(req.body);
-// } catch (err) {
-//     return res.status(400).json({
-//         erro: true,
-//         message: err.errors,
-//     });
-// }
-// return next();
-// };
 
 const validateCredentials = async (req, res, next) => {
     const { displayName, email, password } = req.body;
@@ -41,10 +21,12 @@ return next();
 
 const userExist = async (req, res, next) => {
     const { email } = req.body;
-    const userCheck = await User.findOne({
-        where: { [Op.and]: { email } },
+    const user = await User.findOne({
+        where: { email },
     });
-    if (userCheck) return res.status(409).json({ message: 'User already registered' });
+    if (user) { 
+        return res.status(409).json({ message: 'User already registered' }); 
+}
 
     return next();
 };
