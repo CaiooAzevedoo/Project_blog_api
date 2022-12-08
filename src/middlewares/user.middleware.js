@@ -28,7 +28,7 @@ const validateCredentials = async (req, res, next) => {
         return res.status(400).json({
         message: '"displayName" length must be at least 8 characters long' });
     }
-    if (!email) {
+    if (!email.match(/..*@..*\.com/)) {
         return res.status(400).json({ message: '"email" must be a valid email' });
     }
     if (password.length < 6) {
@@ -40,18 +40,11 @@ return next();
 };
 
 const userExist = async (req, res, next) => {
-    const { email, password } = req.body;
+    const { email } = req.body;
     const userCheck = await User.findOne({
-        where: {
-            // OP.and = vai pegar os lugares onde há igualdade nos dois parâmetros
-            // https://sequelize.org/docs/v6/core-concepts/model-querying-basics/
-            [Op.and]: [
-                { email },
-                { password },
-            ],  
-        },
+        where: { [Op.and]: { email } },
     });
-    if (!userCheck) return res.status(400).json({ message: 'User already registered' });
+    if (userCheck) return res.status(409).json({ message: 'User already registered' });
 
     return next();
 };

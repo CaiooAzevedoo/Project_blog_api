@@ -4,7 +4,7 @@ const {
   validateToken, 
   validateCredentials, 
   userExist } = require('../middlewares/user.middleware');
-const { getUsers, addNewUser } = require('../controllers/user.controller');
+const { getUsers, addNewUser, getUserId } = require('../controllers/user.controller');
 
 const router = express.Router();
 
@@ -15,6 +15,11 @@ router.get('/',
 validateHeader, 
 validateToken, 
 getUsers);
+
+router.get('/:id', 
+validateHeader, 
+validateToken, 
+getUserId);
 
 // router.get('/', getUsers);
 

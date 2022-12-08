@@ -5,6 +5,11 @@ const getUsers = () => User.findAll({
     attributes: { exclude: 'password' },
 });
 
+const getUserId = (id) => User.findOne({
+    where: { id },
+    attributes: ['id', 'displayName', 'email', 'image'],
+});
+
 // const postNewUser = async ({ displayName, email, password, image = null }) => { 
 //     const newUser = await User.create({ displayName, email, password, image }); 
 //     const { password: _, ...userWithoutPassword } = newUser.dataValues;
@@ -13,7 +18,7 @@ const getUsers = () => User.findAll({
 // };
 
 const addNewUser = async ({ displayName, email, password, image = null }) => { 
-    User.create({ displayName, email, password, image });
+    await User.create({ displayName, email, password, image });
     // const newUser = await User.create({ displayName, email, password, image }); 
     // const { password: _, ...userWithoutPassword } = newUser.dataValues;
     // const token = jwt.sign({ data: userWithoutPassword });
@@ -24,4 +29,5 @@ module.exports = {
     getUsers,
     // postNewUser,
     addNewUser,
+    getUserId,
 };
