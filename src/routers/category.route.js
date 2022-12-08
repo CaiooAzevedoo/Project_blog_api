@@ -7,4 +7,7 @@ const router = express.Router();
 router.post('/', validateHeader, validateToken,
 addNewCategory);
 
+// router.post('/',
+// addNewCategory);
+
 module.exports = router;
