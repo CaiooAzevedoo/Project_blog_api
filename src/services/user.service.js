@@ -10,7 +10,7 @@ const getUserId = (id) => User.findOne({
 });
 
 const addNewUser = async ({ displayName, email, password, image }) => { 
-    await User.create({ displayName, email, password, image });
+    User.create({ displayName, email, password, image });
 };
 
 module.exports = {

@@ -1,16 +1,19 @@
 const { userService } = require('../services');
-const { jwt } = require('../utils');
+const { generateToken } = require('../utils');
 
 const addNewUser = async (req, res) => {
     try {
     const newUser = req.body;
+    // const { displayName, email, password, image } = req.body;
 
     await userService.addNewUser(newUser);
-    const token = jwt.generateToken(newUser.email);
+    // await userService.addNewUser({ displayName, email, password, image });
+    const token = generateToken(newUser.email);
+    // const token = jwt.generateToken({ email });
 
-    return res.status(201).json({ message: token });
+    return res.status(201).json({ token });
     } catch (err) {
-    return res.status(400).json({ });
+    return res.status(401).json({ message: err.message });
     }
 };
 
@@ -22,7 +25,7 @@ const getUsers = async (_req, res) => {
     return res.status(200).json(allUsers);
     } catch (err) {
     return res.status(500).json({
-        message: 'Error',
+        message: err.message,
     });
     }
 };
