@@ -1,5 +1,5 @@
-const { BlogPost, User } = require('../models');
-// const { BlogPost, User, Category } = require('../models');
+// const { BlogPost, User } = require('../models');
+const { BlogPost, User, Category } = require('../models');
 // const { BlogPost } = require('../models');
 
 const addNewPost = async ({ title, content, userId }) => { 
@@ -22,9 +22,9 @@ const getAllPost = async () => BlogPost.findAll({
   include: [
   { model: User,
     as: 'user',
-    attributes: { exclude: 'password' },
+    attributes: { exclude: ['password'] },
    },
-  // { model: Category, as: 'categories', through: { attributes: [] } },
+  { model: Category, as: 'categories', through: { attributes: [] } },
 ] });
 
 // const getAllPost = async () => { 
