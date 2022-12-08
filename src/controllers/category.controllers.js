@@ -4,7 +4,6 @@ const addNewCategory = async (req, res) => {
   try {
     const { name } = req.body;
     await categoryService.addNewCategory(name);
-    // if (!newCategory) throw Error;
 
     return res.status(201).json({ name });
     } catch (err) {
