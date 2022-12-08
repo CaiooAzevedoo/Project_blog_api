@@ -1,18 +1,30 @@
 const { BlogPost, User } = require('../models');
+// const { BlogPost, User, Category } = require('../models');
 // const { BlogPost } = require('../models');
 
 const addNewPost = async ({ title, content, userId }) => { 
   BlogPost.create({ title, content, userId });
 };
 
+// const getAllPost = async () => {
+//  const postCategories = await BlogPost.findAll({ 
+//   include: [
+//   { model: User,
+//     as: 'user',
+//     attributes: { exclude: ['password'] },
+//    },
+//   // { model: Category, as: 'categories' },
+// ] }); 
+// return postCategories;
+// };
+
 const getAllPost = async () => BlogPost.findAll({ 
   include: [
   { model: User,
     as: 'user',
-    // through: { attributes: [] },
     attributes: { exclude: 'password' },
    },
-  // { model: Category, as: 'Category' },
+  // { model: Category, as: 'categories', through: { attributes: [] } },
 ] });
 
 // const getAllPost = async () => { 
